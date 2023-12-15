@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mvvmDBpractice.Views.FormView">
+    <ContentPage.Content>
+        <StackLayout Padding="60">
+            <Label Text="Registro de datos:" FontSize="Title"></Label>
+            <Label Text="First Name" />
+            <Entry Text="{Binding FirstName}"></Entry>
+            <Label Text="Last Name" />
+            <Entry Text="{Binding LastName}"></Entry>
+            <Button Text="Save" Command="{Binding InsertCommand}"></Button>
+
+            <Entry Placeholder="Filter" Text="{Binding Filter}" HorizontalOptions="FillAndExpand"></Entry>
+            <Button Text="ShowByText" Command="{Binding SearchCommand}"></Button>
+            <Label Text="Lista de registros: " FontSize="Title"></Label>
+            <ListView x:Name="LvPeople" ItemsSource="{Binding People}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding FirstName}"></Label>
+                                <Label Text="{Binding LastName}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
